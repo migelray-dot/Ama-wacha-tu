@@ -1,0 +1,17 @@
+import type { Metadata } from 'next'\nimport { siteConfig } from '@/config/site'\nimport { Navbar } from '@/components/navigation/Navbar'\nimport { Footer } from '@/components/footer/Footer'\nimport './globals.css'\n\nexport const metadata: Metadata = {\n  title: `${siteConfig.name} - ${siteConfig.description}`,\n  description: siteConfig.description,\n  metadataBase: new URL(siteConfig.url),\n  keywords: ['podcast', 'conversations', 'Africa', 'entrepreneurship', 'personal growth', 'business'],\n  authors: [{ name: 'Ama Wacha Tu' }],\n  openGraph: {\n    type: 'website',\n    locale: 'en_US',\n    url: siteConfig.url,\n    siteName: siteConfig.name,\n    title: siteConfig.name,\n    description: siteConfig.description,\n    images: [{\n      url: siteConfig.ogImage,\n      width: 1200,\n      height: 630,\n      alt: siteConfig.name,\n    }],\n  },\n  twitter: {\n    card: 'summary_large_image',\n    title: siteConfig.name,\n    description: siteConfig.description,\n    images: [siteConfig.ogImage],\n  },\n  manifest: '/manifest.json',\n  robots: 'index, follow',\n  viewport: 'width=device-width, initial-scale=1',\n  themeColor: '#FFD700',\n}\n\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\" suppressHydrationWarning>\n      <head>\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n        <meta name=\"theme-color\" content=\"#FFD700\" />\n        <meta name=\"description\" content={siteConfig.description} />\n        <link rel=\"icon\" href=\"/favicon.ico\" />\n        <link rel=\"apple-touch-icon\" href=\"/apple-touch-icon.png\" />\n        <link rel=\"canonical\" href={siteConfig.url} />\n        <script\n          type=\"application/ld+json\"\n          dangerouslySetInnerHTML={{\n            __html: JSON.stringify({\n              '@context': 'https://schema.org',\n              '@type': 'PodcastSeries',\n              name: siteConfig.name,\n              description: siteConfig.description,\n              url: siteConfig.url,\n              image: siteConfig.ogImage,\n              language: 'en-US',\n              potentialAction: {\n                '@type': 'ListenAction',\n                target: siteConfig.links.spotify,\n              },\n            }),\n          }}\n        />\n      </head>\n      <body className=\"bg-dark-bg text-white\">\n        <Navbar />\n        <main>\n          {children}\n        </main>\n        <Footer />\n      </body>\n    </html>\n  )\n}\n"
+  },
+    "message": "Update root layout with SEO, metadata, and Footer",
+    "owner": "migelray-dot",
+    "path": "app/layout.tsx",
+    "repo": "Ama-wacha-tu"
+  },
+  {
+    "path": "app/page.tsx",
+    "content": "import { HeroSection } from '@/components/hero/HeroSection'\nimport { EpisodesSection } from '@/components/sections/EpisodesSection'\nimport { GuestsSection } from '@/components/sections/GuestsSection'\nimport { AboutSection } from '@/components/sections/AboutSection'\nimport { ContactSection } from '@/components/sections/ContactSection'\n\nexport default function Home() {\n  return (\n    <>\n      <HeroSection />\n      <EpisodesSection />\n      <GuestsSection />\n      <AboutSection />\n      <ContactSection />\n    </>\n  )\n}\n"
+    ,
+    "message": "Update home page with all sections",
+    "owner": "migelray-dot",
+    "path": "app/page.tsx",
+    "repo": "Ama-wacha-tu"
+  }
+]
